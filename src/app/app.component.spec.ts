@@ -14,16 +14,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'jsm-web-ng'`, () => {
+  it(`should have as title 'crm'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('jsm-web-ng');
+    expect(app.title).toEqual('crm');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('jsm-web-ng app is running!');
+    expect(compiled.querySelector('.content span')?.textContent).toContain('crm app is running!');
   });
 });

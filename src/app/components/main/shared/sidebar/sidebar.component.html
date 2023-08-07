@@ -1,0 +1,23 @@
+<div class="sidebar shadow" [ngClass]="{ 'expanded': isExpanded }">
+  <!-- Header -->
+  <div class="header border-bottom mx-3">
+    <img class="logo img-fluid ms-auto" src="assets/img/jsmsoftware.png" alt="CRM by JSM Software" />
+    <div class="toggle ms-auto" (click)="handleSidebarToggle()">
+      <fa-icon class="btn-sidebar" [icon]="'bars'"></fa-icon>
+    </div>
+  </div>
+  <!-- Content -->
+  <div class="content">
+    <div *ngFor="let item of menuItems" class="link mx-3 my-2 rounded-2" [routerLink]="[item.link]" [routerLinkActive]="'active'">
+      <fa-icon [icon]="item.icon"></fa-icon>
+      <div class="title">{{ item.title }}</div>
+    </div>
+  </div>
+  <!-- Footer -->
+  <div class="footer">
+    <div class="link mx-3 my-2 rounded-3" [routerLink]="'login'" [routerLinkActive]="'active'">
+      <fa-icon [icon]="'arrow-right-from-bracket'"></fa-icon>
+      <div class="title ">Logout</div>
+    </div>
+  </div>
+</div>

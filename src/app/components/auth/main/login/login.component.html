@@ -1,0 +1,33 @@
+<body class="bg-default">
+    <app-loader></app-loader>
+    <div class="container-fluid">
+        <section id="main">
+            <div class="wrap-center">
+                <img id="logo" src="assets/img/jsmsoftware.png" alt="CRM by JSM Software" width="200" />
+                <h3 class="mt-3 fw-bold text-center">
+                    <span style="color: rgb(4, 44, 98)" class="d-block">Welcome to</span>
+                    <span style="color: rgb(8, 147, 207)">Customer Relation Management</span>
+                </h3>
+                <form id="loginForm" class="mt-3" [formGroup]="loginForm" (ngSubmit)="submitLogin()">
+                    <div class="form-group mt-4">
+                        <input formControlName="id" name="id" class="form-control" type="text" placeholder="Your email" autocomplete="on" required />
+                        <div *ngIf="(loginFormControl['id'].touched || loginFormSubmitted) && loginFormControl['id'].invalid" class="input-err">
+                            <div *ngIf="loginFormControl['id'].errors?.['required']">required</div>
+                        </div>
+                    </div>
+                    <div class="form-group mt-4">
+                        <input formControlName="password" name="password" class="form-control" type="password" placeholder="Your password" autocomplete="off" required />
+                        <div *ngIf="(loginFormControl['password'].touched || loginFormSubmitted) && loginFormControl['password'].invalid"  class="input-err">
+                            <div *ngIf="loginFormControl['password'].errors?.['required']">required</div>
+                        </div>
+                    </div>
+                    <!-- <div class="text-end font-size-12 mt-3">
+                        <a href="#">Forgot your password?</a>
+                    </div> -->
+                    <button class="btn btn-success mt-5 w-100" type="submit">Login</button>
+                </form>
+                <footer>© {{ currentYear }} JSM Software. All rights reserved.</footer>
+            </div>
+        </section>
+    </div>
+</body>

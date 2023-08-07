@@ -1,0 +1,33 @@
+.form-group {
+	.form-select, .form-control {
+		padding: 10px 20px;
+		min-width: 100%;
+		font-size: 14px;
+		border: none;
+		border-bottom: 1px #aaaaaa solid;
+		background: none;
+		border-radius: 0px;
+	}
+
+	label {
+		font-size: 0.75em;
+		font-weight: 600;
+		color: gray;
+	
+		&.form-control-label {
+			position: absolute;
+			padding-top: 15px;
+			padding-left: 20px;
+		}
+	}
+}
+
+.input-err, .input-err-center {
+	color: #b90c0c;
+	font-weight: 500;
+	font-size: 12px;
+	font-style: italic;
+	text-align: left !important;
+}
+
+.input-err-center { text-align: center !important; }
