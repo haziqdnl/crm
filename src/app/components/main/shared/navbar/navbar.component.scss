@@ -1,0 +1,10 @@
+.navbar {
+    margin-bottom: 20px;
+    
+    fa-icon {
+        cursor: pointer;
+        transition: 0.3s;
+    
+        &:hover {transform: scale(1.2);}
+    }
+}

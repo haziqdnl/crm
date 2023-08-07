@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { GeneralService } from 'src/app/services/general/general.service';
 
 @Component({
   selector: 'app-index',
@@ -7,4 +8,15 @@ import { Component } from '@angular/core';
 })
 export class IndexComponent {
 
+  menuItems: any = [];
+  constructor(public g: GeneralService) {}
+
+  @Output() updateNavbarPageTitle: EventEmitter<string> = new EventEmitter();
+  ngOnInit() {
+    this.updateNavbarPageTitle.emit("Dashboard");
+    this.g.mainLayoutMenu.forEach((data: any) => {
+      if (data.title !== 'Dashboard')
+        this.menuItems.push(data);
+    });
+  }
 }

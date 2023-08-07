@@ -1,7 +1,10 @@
 .content {
-    margin: 20px;
-    margin-left: 100px;
+    background: #f5f5f5;
+    padding-right: 25px;
+    padding-left: 115px;
     transition: 0.3s;
+    width: 100vw !important;
+    height: 100vh !important;
     
-    &.sidebarExpanded { margin-left: 280px; }
+    &.sidebarExpanded { padding-left: 280px; }
 }

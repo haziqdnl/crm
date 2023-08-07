@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { GeneralService } from 'src/app/services/general/general.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -7,12 +8,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class SidebarComponent {
 
-  public menuItems: any = [
-    { link: '/',                title: 'Dashboard',       icon:'home'     },
-    { link: '/administration',  title: 'Administration',  icon:'database' },
-    { link: '/csr',             title: 'Service Report',  icon:'flag'     },
-    { link: '/setting',         title: 'Settings',        icon:'gear'     },
-  ];
+  constructor(public g: GeneralService) {}
 
   @Input() public isExpanded: boolean = false;
   @Output() toggleSidebar: EventEmitter<boolean> = new EventEmitter<boolean>();

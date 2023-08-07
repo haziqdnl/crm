@@ -1,8 +1,6 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { catchError, firstValueFrom, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +8,6 @@ import { catchError, firstValueFrom, Observable } from 'rxjs';
 export class GeneralService {
 
   constructor(
-    private http: HttpClient,
     private router: Router,
   ) { }
 
@@ -22,11 +19,11 @@ export class GeneralService {
   /**
    *  Method: User Token
    */
-  public userToken = 'jwtToken';
-  setUserToken(t: any) {
+  private userToken = 'jwtToken';
+  public setUserToken(t: any) {
     localStorage.setItem(this.userToken, t);
   }
-  getUserToken() {
+  public getUserToken() {
     return localStorage.getItem(this.userToken);
   }
 
@@ -44,7 +41,7 @@ export class GeneralService {
   /**
    *  Method: End Session / Reset Token
    */
-  endSession(module: any) {
+  public endSession(module: any) {
     this.setUserToken("");
     this.router.navigate([module + '/login']);
   }
@@ -52,7 +49,7 @@ export class GeneralService {
   /**
    *  Method: To set input type text as numeric only
    */
-  numberOnly(event: any): boolean {
+  public umberOnly(event: any): boolean {
     const charCode = (event.which) ? event.which : event.keyCode;
     return charCode > 31 && (charCode < 48 || charCode > 57) ? false : true;
   }
@@ -60,7 +57,7 @@ export class GeneralService {
   /**
    *  Method: Match two passwords
    */
-  matchPasswords(pwd1: string, pwd2: string) {
+  public matchPasswords(pwd1: string, pwd2: string) {
     return (formGroup: FormGroup) => {
       const pwdCtrl1 = formGroup.controls[pwd1];
       const pwdCtrl2 = formGroup.controls[pwd2];
@@ -78,7 +75,7 @@ export class GeneralService {
   /**
    *  Method: Get current Date (no time)
    */
-  getCurrentDateOnly() {
+  public getCurrentDateOnly() {
     let todayDateTime = new Date();
     let year = todayDateTime.getFullYear();
     let month = (todayDateTime.getMonth() + 1).toString().length == 1 ? '0' + (todayDateTime.getMonth() + 1) : todayDateTime.getMonth() + 1;
@@ -88,12 +85,12 @@ export class GeneralService {
   }
 
   /**
-   *  Method: Get user current location
+   *  Method: Main layout menu
    */
-  apiGeolocation(lt: any, ln: any): Observable<any> {
-    let location = ln + ',' + lt;
-    return this.http.get(`https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/reverseGeocode?f=json&featureTypes=&location=${location}`)
-      .pipe( catchError( err => { throw err } )
-    )
-  }
+  public mainLayoutMenu: any = [
+    { link: '/',                title: 'Dashboard',       icon:'home'     },
+    { link: '/administration',  title: 'Administration',  icon:'database' },
+    { link: '/csr',             title: 'Service Report',  icon:'flag'     },
+    { link: '/setting',         title: 'Settings',        icon:'gear'     },
+  ];
 }

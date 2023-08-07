@@ -6,6 +6,5 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent {
-
-  @Input() public title: string = "";
+  @Input() public pageTitle: string = "";
 }
