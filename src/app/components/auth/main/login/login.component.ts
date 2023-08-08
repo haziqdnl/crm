@@ -28,14 +28,12 @@ export class LoginComponent {
   /**
    *  Method: Auto login if a JWT token in the local storage login still valid
    */
-  isTokenExistOrValid() {
+  private isTokenExistOrValid() {
     if (this.g.getUserToken() != "") {
-      console.log(this.g.getUserToken());
       this.apiAuthService.apiGetAllUser(this.g.getUserToken()).subscribe(
         ok => { 
           if (ok.code == "200")
-            console.log(ok);
-            //this.router.navigate(['']);
+            this.router.navigate(['']);
         },
         err => {
           console.log(err.error);
@@ -48,18 +46,18 @@ export class LoginComponent {
   /**
    *  Method: Form builder and control
    */
-  loginForm: FormGroup = this.fb.group({
+  public loginForm: FormGroup = this.fb.group({
     id:       ['', [Validators.required]],
     password: ['', [Validators.required]],
   });
-  loginFormSubmitted = false;
+  public loginFormSubmitted = false;
   get loginFormControl() { return this.loginForm.controls; }
 
   /**
    *  Method: Submit login form
    */
-  isIdPasswordValid: boolean = false;
-  submitLogin() {
+  public isIdPasswordValid: boolean = false;
+  public submitLogin() {
     this.loginFormSubmitted = true;
     if (this.loginForm.valid) {
       let request = {
@@ -70,24 +68,14 @@ export class LoginComponent {
         ok => { 
           if (ok.code == "200") {
             this.g.setUserToken(ok.extended_token);
-            //this.router.navigate(['']);
+            this.router.navigate(['']);
           }
         },
         err => {
           this.toastr.error(err.error.message);
           this.isIdPasswordValid = false;
         },
-      ); 
-      // rsp => {
-      //   if (rsp.code == "200") {
-      //     this.g.setUserToken(rsp.d.RespData[0].Token);
-      //     this.router.navigate(['']);
-      //   }
-      //   else {
-      //     this.toastr.error("Invalid ID/Password !");
-      //     this.isIdPasswordValid = false;
-      //   }
-      // });
+      );
     }
   }
 }

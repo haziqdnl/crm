@@ -1,0 +1,17 @@
+<body>
+    <app-loader></app-loader>
+    <div class="container-fluid">
+        <section id="main">
+            <div class="wrap-center">
+                <img id="logo" src="assets/img/jsmsoftware.png" alt="CRM by JSM Software" width="100" />
+                <div class="icon">
+                    <p>401</p>
+                    <fa-icon [icon]="'triangle-exclamation'"></fa-icon>
+                </div>
+                <p class="text-center">You are not authorized to access or your session has ended.</p>
+                <button class="btn btn-primary mt-3" (click)="toLogin()">Login again</button>
+                <footer>© {{ currentYear }} JSM Software. All rights reserved.</footer>
+            </div>
+        </section>
+    </div>
+</body>

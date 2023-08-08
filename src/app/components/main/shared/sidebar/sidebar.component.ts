@@ -12,5 +12,5 @@ export class SidebarComponent {
 
   @Input() public isExpanded: boolean = false;
   @Output() toggleSidebar: EventEmitter<boolean> = new EventEmitter<boolean>();
-  handleSidebarToggle = () => this.toggleSidebar.emit(!this.isExpanded);
+  public handleSidebarToggle = () => this.toggleSidebar.emit(!this.isExpanded);
 }

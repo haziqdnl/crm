@@ -8,7 +8,7 @@ import { GeneralService } from 'src/app/services/general/general.service';
 })
 export class IndexComponent {
 
-  menuItems: any = [];
+  public menuItems: any = [];
   constructor(public g: GeneralService) {}
 
   @Output() updateNavbarPageTitle: EventEmitter<string> = new EventEmitter();

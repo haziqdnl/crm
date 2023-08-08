@@ -3,9 +3,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoaderComponent } from './services/loader/loader.component';
 import { LoaderInterceptor } from './services/loader/loader.interceptor';
-//  Component: Main
+//  Components: Error Modules
+import { NotFoundComponent } from './components/error/not-found/not-found.component';
+import { UnauthorizedComponent } from './components/error/unauthorized/unauthorized.component';
+//  Components: Main Modules
 import { LoginComponent as MainLoginComponent } from './components/auth/main/login/login.component';
 import { LayoutComponent as MainLayoutComponent } from './components/main/layout/layout.component';
+import { SidebarComponent as MainSidebarComponent } from './components/main/shared/sidebar/sidebar.component';
+import { NavbarComponent as MainNavbarComponent } from './components/main//shared/navbar/navbar.component';
+import { FooterComponent as MainFooterComponent } from './components/main//shared/footer/footer.component';
 import { IndexComponent as MainIndexComponent } from './components/main/index/index.component';
 //  Packages
 import { HashLocationStrategy, LocationStrategy, PathLocationStrategy } from '@angular/common';
@@ -25,9 +31,6 @@ import { FontAwesomeModule, FaIconLibrary  } from '@fortawesome/angular-fontawes
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrModule } from 'ngx-toastr';
-import { SidebarComponent as MainSidebarComponent } from './components/main/shared/sidebar/sidebar.component';
-import { NavbarComponent as MainNavbarComponent } from './components/main//shared/navbar/navbar.component';
-import { FooterComponent as MainFooterComponent } from './components/main//shared/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +42,8 @@ import { FooterComponent as MainFooterComponent } from './components/main//share
     MainNavbarComponent,
     MainFooterComponent,
     MainIndexComponent,
+    NotFoundComponent,
+    UnauthorizedComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -60,7 +65,7 @@ import { FooterComponent as MainFooterComponent } from './components/main//share
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true },
-    { provide: LocationStrategy, useClass: PathLocationStrategy },
+    { provide: LocationStrategy, useClass: HashLocationStrategy },
   ],
   bootstrap: [AppComponent]
 })

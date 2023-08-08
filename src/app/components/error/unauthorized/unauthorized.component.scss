@@ -1,8 +1,9 @@
 body {
-    background-image: url("../../../../../assets/img/kl.jpg");
+    background-image: url("../../../../assets/img/kl.jpg");
     background-size: cover; 
     background-repeat: no-repeat;
-    
+    transition: 0.3s;
+
     .container-fluid {
         height: 100vh !important;
         padding: 0;
@@ -11,7 +12,20 @@ body {
             position: relative;
             background: #f7f7f7;
             width: 50%;
-            height: 100vh;
+
+            .icon {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: rgb(167, 0, 0);
+                font-size: 100px;
+                font-weight: 600;
+
+                fa-icon {
+                    margin-left: 10px;
+                    font-size: 60px;
+                }
+            }
 
             footer {
                 position: absolute;

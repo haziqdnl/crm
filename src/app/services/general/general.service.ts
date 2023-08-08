@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
@@ -9,17 +10,19 @@ export class GeneralService {
 
   constructor(
     private router: Router,
+    private toastr: ToastrService
   ) { }
 
   /**
    *  Method: Configure API connectivity
    */
-  public apiBaseUrl: string = "https://jayasatria.com/crm/app/api";
+  //public apiBaseUrl: string = "https://jayasatria.com/crm/app/api";
+  public apiBaseUrl: string = "http://127.0.0.1:8000/api";
 
   /**
    *  Method: User Token
    */
-  private userToken = 'jwtToken';
+  private userToken = 'jsmsoftware_usertoken';
   public setUserToken(t: any) {
     localStorage.setItem(this.userToken, t);
   }
@@ -30,26 +33,33 @@ export class GeneralService {
   /**
    *  Method: Error Handling
    */
-  // apiRespError(rsp: any, moduleName: string) {
-  //   if (rsp.RespCode != '401') {
-  //     const modalRef = this.modalService.open(ErrorModalComponent, { centered: true });
-  //     modalRef.componentInstance.item = rsp;
-  //   }
-  //   else this.router.navigate(['error/401'], { queryParams: { m: moduleName } });
-  // }
+  apiRespError(errData: any, moduleName: string) {
+    if (errData.code !== '401') {
+      this.toastr.error(errData.message);
+    }
+    else this.router.navigate(['error/401'], { queryParams: { m: moduleName } });
+  }
 
   /**
-   *  Method: End Session / Reset Token
+   *  Method: End User Session / Reset User Token
    */
-  public endSession(module: any) {
+  public endUserSession() {
     this.setUserToken("");
-    this.router.navigate([module + '/login']);
+    this.router.navigate(['/login']);
+  }
+
+  /**
+   *  Method: End User Session / Reset User Token
+   */
+  public endCustomerSession() {
+    //this.setUserToken("");
+    //this.router.navigate(['/login']);
   }
 
   /**
    *  Method: To set input type text as numeric only
    */
-  public umberOnly(event: any): boolean {
+  public numberOnly(event: any): boolean {
     const charCode = (event.which) ? event.which : event.keyCode;
     return charCode > 31 && (charCode < 48 || charCode > 57) ? false : true;
   }
