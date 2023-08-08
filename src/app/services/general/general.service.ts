@@ -16,8 +16,8 @@ export class GeneralService {
   /**
    *  Method: Configure API connectivity
    */
-  //public apiBaseUrl: string = "https://jayasatria.com/crm/app/api";
-  public apiBaseUrl: string = "http://127.0.0.1:8000/api";
+  public apiBaseUrl: string = "https://jayasatria.com/crm/app/api";
+  //public apiBaseUrl: string = "http://127.0.0.1:8000/api";
 
   /**
    *  Method: User Token
@@ -99,7 +99,7 @@ export class GeneralService {
    */
   public mainLayoutMenu: any = [
     { link: '/',                title: 'Dashboard',       icon:'home'     },
-    { link: '/administration',  title: 'Administration',  icon:'database' },
+    { link: '/profiling',       title: 'Profiling',       icon:'database' },
     { link: '/csr',             title: 'Service Report',  icon:'flag'     },
     { link: '/setting',         title: 'Settings',        icon:'gear'     },
   ];

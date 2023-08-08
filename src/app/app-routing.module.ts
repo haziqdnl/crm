@@ -3,28 +3,22 @@ import { RouterModule, Routes } from '@angular/router';
 //  Components: Error Modules
 import { NotFoundComponent } from './components/error/not-found/not-found.component';
 import { UnauthorizedComponent } from './components/error/unauthorized/unauthorized.component';
-//  Component: Staff
-import { LoginComponent as MainLoginComponent } from './components/auth/main/login/login.component';
-import { LayoutComponent as MainLayoutComponent } from './components/main/layout/layout.component';
-import { IndexComponent as MainIndexComponent } from './components/main/index/index.component';
+//  Component: Main Modules
+import { LayoutComponent } from './components/layout/layout.component';
+import { IndexComponent } from './components/index/index.component';
 
 const routes: Routes = [
   /** ================
    *  Components: Main
    *  ================
    */
-  { 
-    path: 'login', 
-    component: MainLoginComponent, 
-    title: "CRM | Login",
-  },
   {
     path: '',
-    component: MainLayoutComponent,
+    component: LayoutComponent,
     children: [
       {
         path: '',
-        component: MainIndexComponent,
+        component: IndexComponent,
         title: "CRM | Dashboard"
       },
     ]
@@ -33,21 +27,16 @@ const routes: Routes = [
    *  Components: Misc/Others
    *  =======================
    */
-  {
-    path: 'error/401',
-    component: UnauthorizedComponent,
-    title: 'CRM | Unauthorized'
-  },
+  { path: '**', redirectTo: '/error/404', pathMatch: 'full' },
   {
     path: 'error/404',
     component: NotFoundComponent,
     title: 'CRM | Not Found'
   },
   {
-    path: '**',
-    pathMatch: 'full',
-    component: NotFoundComponent,
-    title: 'CRM | Not Found'
+    path: 'error/401',
+    component: UnauthorizedComponent,
+    title: 'CRM | Unauthorized'
   },
 ];
 

@@ -11,6 +11,7 @@ $color-active: #042c62;
   transition: 0.3s;
   background: $color-bg;
   overflow-y: auto;
+  z-index: 999999;
 
   .header {
     display: flex;
@@ -81,6 +82,33 @@ $color-active: #042c62;
         .title  { max-width: 100%; display: block; }
         fa-icon { margin-right: 15px; }
       }
+    }
+  }
+}
+
+/* Laptops/desktops, 1200px and up */
+@media only screen and (min-width: 1200px) {}
+
+/* Small laptops/desktops, 992px and up */
+@media only screen and (min-width: 992px) {}
+
+/* Landscape tablets, 992px and down */
+@media only screen and (max-width: 992px) {}
+
+/* Landscape tablets, 768px and up */
+@media only screen and (min-width: 768px) {}
+
+/* Portrait tablets and larger phones, 768px and down */
+@media only screen and (max-width: 768px) {}
+
+/* Portrait tablets and larger phones, 600px and up */
+@media only screen and (min-width: 600px) {}
+
+/* Phones, 600px and down */
+@media only screen and (max-width: 600px) {
+  .sidebar {  
+    &.expanded {
+      width: 100vw;
     }
   }
 }

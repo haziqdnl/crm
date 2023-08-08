@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders  } from '@angular/common/http';
+import { HttpClient  } from '@angular/common/http';
 import { catchError, Observable } from 'rxjs';
 import { GeneralService } from '../services/general/general.service';
 
@@ -12,11 +12,7 @@ export class ApiAuthService {
   constructor(public http: HttpClient, private g: GeneralService) {}
 
   apiValidateToken(token: any): Observable<any> {
-    var headers = new HttpHeaders ({
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${token}`
-    })
-    return this.http.post(`${this.g.apiBaseUrl}/${this.controllerName}/user/validate/token`, { headers: headers })
+    return this.http.post(`${this.g.apiBaseUrl}/${this.controllerName}/user/validate/token`, null, { 'headers': { 'content-type': 'application/json', 'Authorization': 'Bearer ' + token } })
       .pipe( catchError( (err) => { throw err; } ) )
   }
 

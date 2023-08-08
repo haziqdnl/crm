@@ -1,0 +1,12 @@
+<div class="content">
+    <div class="menu-boxes row">
+        <div class="menu col-auto rounded shadow m-4" *ngFor="let item of menuItems" [routerLink]="[item.link]">
+            <div class="icon">
+                <fa-icon class="rounded shadow-sm" [icon]="item.icon"></fa-icon>
+            </div>
+            <div class="title">
+                {{ item.title }}
+            </div>
+        </div>
+    </div>
+</div>

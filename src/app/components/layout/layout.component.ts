@@ -33,15 +33,8 @@ export class LayoutComponent {
 
   private validateToken() {
     this.apiAuthService.apiValidateToken(this.g.getUserToken()).subscribe(
-      ok => { 
-        if (ok.code == "200")
-          console.log(ok);
-          //this.router.navigate(['']);
-      },
-      err => {
-        console.log(err.error)
-        //this.g.apiRespError(err.error, '');
-      },
+      ok  => { console.log('User authorized') },
+      err => { this.g.apiRespError('', 'crm') },
     );
   }
 };

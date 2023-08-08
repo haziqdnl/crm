@@ -7,12 +7,10 @@ import { LoaderInterceptor } from './services/loader/loader.interceptor';
 import { NotFoundComponent } from './components/error/not-found/not-found.component';
 import { UnauthorizedComponent } from './components/error/unauthorized/unauthorized.component';
 //  Components: Main Modules
-import { LoginComponent as MainLoginComponent } from './components/auth/main/login/login.component';
-import { LayoutComponent as MainLayoutComponent } from './components/main/layout/layout.component';
-import { SidebarComponent as MainSidebarComponent } from './components/main/shared/sidebar/sidebar.component';
-import { NavbarComponent as MainNavbarComponent } from './components/main//shared/navbar/navbar.component';
-import { FooterComponent as MainFooterComponent } from './components/main//shared/footer/footer.component';
-import { IndexComponent as MainIndexComponent } from './components/main/index/index.component';
+import { LayoutComponent } from './components/layout/layout.component';
+import { SidebarComponent } from './components/shared/sidebar/sidebar.component';
+import { NavbarComponent } from './components/shared/navbar/navbar.component';
+import { IndexComponent } from './components/index/index.component';
 //  Packages
 import { HashLocationStrategy, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -35,13 +33,11 @@ import { ToastrModule } from 'ngx-toastr';
 @NgModule({
   declarations: [
     AppComponent,
-    MainLoginComponent,
     LoaderComponent,
-    MainLayoutComponent,
-    MainSidebarComponent,
-    MainNavbarComponent,
-    MainFooterComponent,
-    MainIndexComponent,
+    LayoutComponent,
+    SidebarComponent,
+    NavbarComponent,
+    IndexComponent,
     NotFoundComponent,
     UnauthorizedComponent,
   ],
